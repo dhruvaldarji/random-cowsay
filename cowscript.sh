@@ -24,6 +24,7 @@ cow=(`cowsay -l | tail -n +2 | tr  " "  "\n" | sort -R | head -n 1`)
 declare -a commands=("cowsay" "cowthink")
 rand=$[ $RANDOM % 2 ]
 command=${commands[$rand]}
+randomFortune=${2-$(fortune)}
 
 # Display startup text and cowsay with lolcat.
-(artii $startupText && fortune | $command -f $cow) | lolcat
+(artii $startupText && echo "$randomFortune" | $command -f $cow) | lolcat
